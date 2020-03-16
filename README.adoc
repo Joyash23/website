@@ -27,7 +27,6 @@ In the context of the {helpgroup} it was identified the need o have a web site t
 . Ability for support seeker to create aid requests
 .. Filtering by spoken language
 . Filtering by postal code
-. Ability to find the
 
 NOTE: Using geolocation would be more efficient for locating nearest people, should be evaluated once we have a minimal working version with post codes
 
