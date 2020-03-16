@@ -1,0 +1,33 @@
+=  Local Volunteer Community Support Portal website
+
+== Introduction
+
+:helpgroup: https://www.facebook.com/groups/212831576624482/[Zurich Coronavirus Help Group]
+
+In the context of the {helpgroup} it was identified the need o have a web site that can be easily used for the local general community contact within Switzerland. The goal is for people that might need help to easily locate people that is available to help them from the nearast location. With this approach we decrease the distribution/risk of contagium, and protect the group of people that is more vulnerable to the Covid-19 oubtreak.
+
+== Known Similar Initatives
+
+.World wide examples
+|===
+|Region|Link |Observations
+
+| Switzerland | https://www.hilf-jetzt.ch/ | German only, group finding
+| Germany| https://www.quarantaenehelden.org | German only
+|===
+
+== Desired Features
+
+. Simple interface to be usable by elder people
+. Multilanguage support for the site structure
+. Ability for support providers to register
+.. spoken languages
+.. covering regions
+.. support category ? (Grosseries/Pharmacy/Others?)
+. Ability for support seeker to create aid requests
+.. Filtering by spoken language
+. Filtering by postal code
+. Ability to find the
+
+NOTE: Using geolocation would be more efficient for locating nearest people, should be evaluated once we have a minimal working version with post codes
+
