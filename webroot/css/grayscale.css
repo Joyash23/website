@@ -114,3 +114,8 @@ p.strong {
   text-transform: uppercase;
 }
 
+.warning {
+  font-weight: bold;
+  color: #cc0000;
+  background-color: bisque;
+}
