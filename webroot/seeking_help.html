@@ -1,6 +1,13 @@
-<form>
+<form action="submit_help_request">
     <label for="fname">Name:</label><br>
-    <input type="text" id="fname" name="fname"><br>
-    <label for="lname">Last name:</label><br>
-    <input type="text" id="lname" name="lname">
+    <input type="text" id="fname" name="fname" required><br>
+    <label for="phone">Enter your phone number:</label><br>
+    <input type="tel" id="phone" name="phone"
+        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+        required
+        maxlength=10
+        >
+    <small>Format: 0-456-7890</small>
+    <br><br>
+    <input type="submit" value="Submit">
 </form>
