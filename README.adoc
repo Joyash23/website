@@ -6,6 +6,14 @@
 
 In the context of the {helpgroup} it was identified the need o have a web site that can be easily used for the local general community contact within Switzerland. The goal is for people that might need help to easily locate people that is available to help them from the nearast location. With this approach we decrease the distribution/risk of contagium, and protect the group of people that is more vulnerable to the Covid-19 oubtreak.
 
+== How to test
+
+```bash
+git clone https://github.com/ViralHelp/website
+pip install --user quickweb
+quickweb run website
+```
+
 == Known Similar Initatives
 
 .World wide examples

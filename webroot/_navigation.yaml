@@ -1,0 +1,6 @@
+navigation_title: <span class="light">Start</span> Bootstrap
+
+navigation_items:
+  - name: About
+  - name: Download
+  - name: Contact
