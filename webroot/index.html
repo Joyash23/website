@@ -1,15 +1,17 @@
 <div class="language">
-    <a href="/de/">German</a> -
-    <a href="/de/">French</a> -
-    <a href="/de/">Italian</a> -
-    <a href="/en/">English</a>
+    <a href="{{ scheme() }}://de.{{ domain() }}">German</a> -
+    <a href="{{ scheme() }}://fr.{{ domain() }}">French</a> -
+    <a href="{{ scheme() }}://it.{{ domain() }}">Italian</a> -
+    <a href="{{ scheme() }}://en.{{ domain() }}">English</a>
 </div>
-<h1 class="centered">From the people for the people.</h1>
+<h1 class="centered">{{ slogan }}</h1>
 <div class="logo">
     <img src="images/ViralHelp.png"  height="200"></img>
 </div>
+
 <div class="centered">
-    <p>Make a new post about providing or seeking help or simply browse through the respective posts to find a helper or person in need.</p>
-    <button class="red_button" onclick="window.location.href = '/seeking_help';">Seeking help</button>
-    <button class="green_button"  onclick="window.location.href = '/providing_help';">Providing help</button>
+    <p>{{ instructions }}</p>
+    <button class="red_button" onclick="window.location.href = '/seeking_help';">{{ seeking_help }}</button>
+    <button class="green_button"  onclick="window.location.href = '/providing_help';">{{ providing_help }}</button>
 </div>
+
