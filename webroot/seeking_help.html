@@ -1,39 +1,39 @@
 In order to get help you must provide accurate information.
 <br><br>
 <form action="submit_help_request" method="put">
-    <label for="fname">Enter your name:</label><br>
-    <input type="text" id="fname" name="fname" required><br>
-    <label for="zipcode" maxlength="4">Enter your zip Code:</label><br>
-    <input type="text" id="zipcode" name="zipcode" required><br>
-    <label for="phone">Enter your phone number:</label><br>
+    <label for="fname">Enter your name:</label>
+    <input type="text" id="fname" name="fname" required>
+    <label for="zipcode" maxlength="4">Enter your zip Code:</label>
+    <input type="text" id="zipcode" name="zipcode" required>
+    <label for="phone">Enter your phone number ((0)xxxxxxx):</label>
     <input type="tel" id="phone" name="phone"
         pattern="[0-9]{9}"
         required
         maxlength=9
         >
-    <small>Format: (0)xxxxxxx</small><br>
-    <br><br>
-    Seeking help with:<br>
+    <br>
+    <label>Seeking help with:</label>
     <input type="checkbox" id="vehicle1" name="vehicle1" value="Shopping">
-    <label for="vehicle1">Shopping</label><br>
+    <label class="light" for="vehicle1">Shopping</label><br>
     <input type="checkbox" id="vehicle2" name="vehicle2" value="Pets">
-    <label for="vehicle2">Pets</label><br>
+    <label class="light" for="vehicle2">Pets</label><br>
     <input type="checkbox" id="vehicle3" name="vehicle3" value="Kids">
-    <label for="vehicle3">Kids</label><br>
+    <label class="light" for="vehicle3">Kids</label><br>
     <input type="checkbox" id="vehicle3" name="vehicle3" value="Kids">
-    <label for="vehicle3">Other</label>
-    <br><br>
-    I can speak:<br>
+    <label class="light" for="vehicle3">Other</label>
+    <br>
+    <br>
+    <label>I can speak:</label>
     <input type="checkbox" id="vehicle1" name="vehicle1" value="Shopping">
-    <label for="vehicle1">German</label><br>
+    <label class="light" for="vehicle1">German</label><br>
     <input type="checkbox" id="vehicle2" name="vehicle2" value="Pets">
-    <label for="vehicle2">Italian</label><br>
+    <label class="light" for="vehicle2">Italian</label><br>
     <input type="checkbox" id="vehicle3" name="vehicle3" value="Kids">
-    <label for="vehicle3">French</label><br>
+    <label class="light" for="vehicle3">French</label><br>
     <input type="checkbox" id="vehicle4" name="vehicle3" value="Kids">
-    <label for="vehicle3">English</label>
+    <label class="light" for="vehicle3">English</label>
     <br>
     <p class="warning">When ordering grosseries or medicine never provide money in advance, pay when you receive your goods acoording to the resulting bill.</p>
     <br>
-    <input type="submit" value="Submit">
+    <button class="green_button" type="submit">Submit</button>
 </form>
