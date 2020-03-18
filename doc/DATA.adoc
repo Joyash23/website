@@ -18,7 +18,7 @@ NOTE: We must provide terms & conditions and healhcare guidelines
 
 WARNING: Must have a captcha to prevent abuse
 
-== Help Requestes
+== Help Requests
 
 Help requests are treated as individual requests, that can be searched and self-assigned by help providers.
 
