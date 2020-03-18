@@ -1,0 +1,38 @@
+= Data Specification
+
+== Help Providers
+
+Help providers should be handled as frequent users, using a minimal register/login work flow
+
+The registration must require the following data:
+
+.Help provider details
+|===
+| Field Name | Description
+| Email | An email that will receive links for login/registration
+| Phone | Swiss phone number (if we can get an SMS GW service)
+|===
+
+NOTE: We must provide terms & conditions and healhcare guidelines
+
+WARNING: Must have a captcha
+
+
+Help requests are treated as individual requests, that can be searched and self-assigned by help providers.
+
+.Help request details
+|===
+| Field Name | Description
+| Name | Name of the person to be contacted
+| Telephone | Number of the phone to be called
+| Spoken Languages | Default to the display language
+| Zip Code |
+| Category | Goods,Medicine,Pet Walking,Others
+| Additional Info| Text field
+| Email | Optional, receive communications from the viralhelp team
+|===
+
+NOTE: We must provide terms & conditions and healhcare guidelines
+
+
+== Help Requests
