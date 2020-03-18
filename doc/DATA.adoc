@@ -10,13 +10,15 @@ The registration must require the following data:
 |===
 | Field Name | Description
 | Email | An email that will receive links for login/registration
+| Zip Code | Mandatory for region filtering
 | Phone | Swiss phone number (if we can get an SMS GW service)
 |===
 
 NOTE: We must provide terms & conditions and healhcare guidelines
 
-WARNING: Must have a captcha
+WARNING: Must have a captcha to prevent abuse
 
+== Help Requestes
 
 Help requests are treated as individual requests, that can be searched and self-assigned by help providers.
 
@@ -26,7 +28,7 @@ Help requests are treated as individual requests, that can be searched and self-
 | Name | Name of the person to be contacted
 | Telephone | Number of the phone to be called
 | Spoken Languages | Default to the display language
-| Zip Code |
+| Zip Code | Mandatory for region filtering
 | Category | Goods,Medicine,Pet Walking,Others
 | Additional Info| Text field
 | Email | Optional, receive communications from the viralhelp team
@@ -35,4 +37,3 @@ Help requests are treated as individual requests, that can be searched and self-
 NOTE: We must provide terms & conditions and healhcare guidelines
 
 
-== Help Requests
