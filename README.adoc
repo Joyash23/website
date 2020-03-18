@@ -10,8 +10,9 @@ In the context of the {helpgroup} it was identified the need to have a web site 
 
 ```bash
 git clone https://github.com/ViralHelp/website
-pip install --user quickweb
-quickweb run website
+cd website
+pip install --user -r requirements.txt
+quickweb run .
 ```
 
 == Known Similar Initatives
