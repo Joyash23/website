@@ -7,6 +7,7 @@ with: "Seeking help with:"
 shopping: Shopping
 pets: Pets
 other: Other
+additional_info: "Additional info:"
 languages: "I can speak:"
 de: German
 it: Italian
