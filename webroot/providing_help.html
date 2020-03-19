@@ -1,6 +1,11 @@
-<form>
-    <label for="fname">Name:</label>
-    <input type="text" id="fname" name="fname">
-    <label for="lname">Last name:</label>
-    <input type="text" id="lname" name="lname">
+<form id="myForm" action="{{ env['API_URL'] }}/provider/register " method="post">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+    <p>{{ description }}</p>
+    <div class="centered">
+        <button class="green_button" type="submit">{{ submit }}</button>
+    </div>
+    <input type="hidden" id="lang" name="lang" value="{{ language() }}">
 </form>
+<div id="failed" class="hidden">{{failed}}</div>
+<div id="success" class="hidden">{{success}}</div>

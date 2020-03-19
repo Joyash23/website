@@ -12,7 +12,7 @@ In the context of the {helpgroup} it was identified the need to have a web site 
 git clone https://github.com/ViralHelp/website
 cd website
 pip install --user -r requirements.txt
-quickweb run .
+scripts/start.sh
 ```
 
 == Known Similar Initatives
