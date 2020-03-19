@@ -2,3 +2,4 @@ submit: Submit
 description: You will receive an email with instructions to complete the registration.
 
 failed: Error submitting request
+success: Check your email for more information.

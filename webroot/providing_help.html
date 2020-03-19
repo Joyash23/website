@@ -3,9 +3,9 @@
     <input type="email" id="email" name="email">
     <p>{{ description }}</p>
     <div class="centered">
-        <button class="green_button" type="submit">{{ submit }}</button>
+        <button id="x" class="green_button">{{ submit }}</button>
     </div>
     <input type="hidden" id="lang" name="lang" value="{{ language() }}">
 </form>
-<div id="failed" class="hidden">{{failed}}</div>
-<div id="success" class="hidden">{{success}}</div>
+<div id="failed" class="hidden centered">{{failed}}</div>
+<div id="success" class="hidden centered">{{success}}</div>
