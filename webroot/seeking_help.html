@@ -1,6 +1,8 @@
 {{description}}
 <br><br>
-<form action="submit_help_request" method="put">
+<form action="{{ env['API_URL'] }}/seeker/request" method="put">
+    <label for="email">{{email}}</label>
+    <input type="email" id="email" name="email">
     <label for="fname">{{name}}</label>
     <input type="text" id="fname" name="fname" required>
     <label for="zipcode" maxlength="4">{{zipcode}}</label>
@@ -13,22 +15,22 @@
         >
     <br>
     <label>{{with}}</label>
-    <input type="checkbox" id="shopping" name="shopping" value="Shopping">
+    <input type="checkbox" id="shopping" name="category" value="shopping">
     <label class="light" for="shopping">{{shopping}}</label><br>
-    <input type="checkbox" id="pets" name="pets" value="Pets">
+    <input type="checkbox" id="pets" name="category" value="pets">
     <label class="light" for="pets">{{pets}}</label><br>
-    <input type="checkbox" id="other" name="other" value="Other">
+    <input type="checkbox" id="other" name="category" value="other">
     <label class="light" for="other">{{other}}</label><br>
     <br>
     <br>
     <label>{{languages}}</label>
-    <input type="checkbox" id="de" name="de" value="Shopping">
+    <input type="checkbox" id="de" name="language" value="de">
     <label class="light" for="de">{{de}}</label><br>
-    <input type="checkbox" id="it" name="it" value="Pets">
+    <input type="checkbox" id="it" name="language" value="it">
     <label class="light" for="it">{{it}}</label><br>
-    <input type="checkbox" id="fr" name="fr" value="Other">
+    <input type="checkbox" id="fr" name="language" value="fr">
     <label class="light" for="fr">{{fr}}</label><br>
-    <input type="checkbox" id="en" name="en" value="Other">
+    <input type="checkbox" id="en" name="language" value="en">
     <label class="light" for="en">{{en}}</label><br>
     <br>
     <p class="warning">{{warning}}</p>

@@ -1,4 +1,5 @@
 description: In order to get help you must provide accurate information.
+email: "Enter your email:"
 name: "Enter your name:"
 zipcode: "Enter your zip Code:"
 phoneNumber: "Enter your phone number ((0)xxxxxxx):"
