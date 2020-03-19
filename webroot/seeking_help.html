@@ -1,37 +1,37 @@
-In order to get help you must provide accurate information.
+{{description}}
 <br><br>
 <form action="submit_help_request" method="put">
-    <label for="fname">Enter your name:</label>
+    <label for="fname">{{name}}</label>
     <input type="text" id="fname" name="fname" required>
-    <label for="zipcode" maxlength="4">Enter your zip Code:</label>
+    <label for="zipcode" maxlength="4">{{zipcode}}</label>
     <input type="text" id="zipcode" name="zipcode" required>
-    <label for="phone">Enter your phone number ((0)xxxxxxx):</label>
+    <label for="phone">{{phoneNumber}}</label>
     <input type="tel" id="phone" name="phone"
         pattern="[0-9]{9}"
         required
         maxlength=9
         >
     <br>
-    <label>Seeking help with:</label>
+    <label>{{with}}</label>
     <input type="checkbox" id="shopping" name="shopping" value="Shopping">
-    <label class="light" for="shopping">Shopping</label><br>
+    <label class="light" for="shopping">{{shopping}}</label><br>
     <input type="checkbox" id="pets" name="pets" value="Pets">
-    <label class="light" for="pets">Pets</label><br>
+    <label class="light" for="pets">{{pets}}</label><br>
     <input type="checkbox" id="other" name="other" value="Other">
-    <label class="light" for="other">Other</label><br>
+    <label class="light" for="other">{{other}}</label><br>
     <br>
     <br>
-    <label>I can speak:</label>
-    <input type="checkbox" id="german" name="german" value="Shopping">
-    <label class="light" for="german">German</label><br>
-    <input type="checkbox" id="italian" name="italian" value="Pets">
-    <label class="light" for="italian">Italian</label><br>
-    <input type="checkbox" id="french" name="french" value="Other">
-    <label class="light" for="french">French</label><br>
-    <input type="checkbox" id="english" name="english" value="Other">
-    <label class="light" for="english">English</label><br>
+    <label>{{languages}}</label>
+    <input type="checkbox" id="de" name="de" value="Shopping">
+    <label class="light" for="de">{{de}}</label><br>
+    <input type="checkbox" id="it" name="it" value="Pets">
+    <label class="light" for="it">{{it}}</label><br>
+    <input type="checkbox" id="fr" name="fr" value="Other">
+    <label class="light" for="fr">{{fr}}</label><br>
+    <input type="checkbox" id="en" name="en" value="Other">
+    <label class="light" for="en">{{en}}</label><br>
     <br>
-    <p class="warning">When ordering grosseries or medicine never provide money in advance, pay when you receive your goods acoording to the resulting bill.</p>
+    <p class="warning">{{warning}}</p>
     <br>
-    <button class="green_button" type="submit">Submit</button>
+    <button class="green_button" type="submit">{{submit}}</button>
 </form>
