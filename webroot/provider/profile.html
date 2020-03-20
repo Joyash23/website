@@ -1,8 +1,8 @@
 {{intro}}
-<form>
+<form id="myForm" action="{{ env['API_URL'] }}/provider/profile " method="post">
     <label for="zipcode" maxlength="4">{{zipcode}}</label>
     <input type="text" id="zipcode" name="zipcode" required>
-    <label>{{languages}}</label>
+    <!-- <label>{{languages}}</label>
     <input type="checkbox" id="de" name="language" value="de">
     <label class="light" for="de">{{de}}</label><br>
     <input type="checkbox" id="it" name="language" value="it">
@@ -11,8 +11,37 @@
     <label class="light" for="fr">{{fr}}</label><br>
     <input type="checkbox" id="en" name="language" value="en">
     <label class="light" for="en">{{en}}</label><br>
-    <br>
+    <br> -->
     <div class="centered">
         <button class="green_button" type="submit">{{submit}}</button>
     </div>
 </form>
+<div id="failed" class="hidden centered">
+    Failed
+    <p id="reason"></p>
+</div>
+<div id="success" class="hidden centered">{{success}}</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
+<script>
+    // wait for the DOM to be loaded
+    $(function() {
+        var options = {
+            success:       showResponse,  // post-submit callback
+            error:         showError,
+        }
+        // bind 'myForm' and provide a simple callback function
+        $('#myForm').ajaxForm(options);
+
+        // post-submit callback
+        function showResponse(responseText, statusText, xhr, $form)  {
+            window.location.href = "/provider/view"
+        }
+
+        function showError(responseText, statusText, xhr, $form)  {
+            $("#failed").show("slow");
+            $("#reason").text(xhr);
+        }
+    });
+</script>

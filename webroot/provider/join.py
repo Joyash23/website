@@ -18,9 +18,11 @@ class Controller(object):
         data = request.read().decode("utf-8")
         json_data = json.loads(data)
         cookie = cherrypy.response.cookie
-        cookie["PROVIDER_DATA"] = jwt.encode(
+        encoded_data = jwt.encode(
             json_data, JWT_SECRET, algorithm="HS256"
         )
+        cookie["PROVIDER_DATA"] = encoded_data
+        print("JOIN", encoded_data.decode('utf-8'))
         cookie["PROVIDER_DATA"]["max-age"] = 43200  # 30 days
-        print("OK")
+        return controller.redirect("/provider/profile")
 
