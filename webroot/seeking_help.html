@@ -15,25 +15,11 @@
         >
     <br>
     <label>{{with}}</label>
-    <input type="checkbox" id="shopping" name="category" value="shopping">
-    <label class="light" for="shopping">{{shopping}}</label><br>
-    <input type="checkbox" id="pets" name="category" value="pets">
-    <label class="light" for="pets">{{pets}}</label><br>
-    <input type="checkbox" id="other" name="category" value="other">
-    <label class="light" for="other">{{other}}</label><br><br>
-    <label for="additional_info">{{additional_info}}</label>
+    {% include "_care_options.html" %}
     <textarea id="additional_info" name="additional_info"></textarea>
     <br>
     <br>
-    <label>{{languages}}</label>
-    <input type="checkbox" id="de" name="language" value="de">
-    <label class="light" for="de">{{de}}</label><br>
-    <input type="checkbox" id="it" name="language" value="it">
-    <label class="light" for="it">{{it}}</label><br>
-    <input type="checkbox" id="fr" name="language" value="fr">
-    <label class="light" for="fr">{{fr}}</label><br>
-    <input type="checkbox" id="en" name="language" value="en">
-    <label class="light" for="en">{{en}}</label><br>
+    {% include "_spoken_languages.html" %}
     <br>
     <p class="warning">{{warning}}</p>
     <br>

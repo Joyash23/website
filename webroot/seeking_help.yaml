@@ -4,14 +4,7 @@ name: "Enter your name:"
 zipcode: "Enter your zip Code:"
 phoneNumber: "Enter your phone number ((0)xxxxxxx):"
 with: "Seeking help with:"
-shopping: Shopping
-pets: Pets
-other: Other
 additional_info: "Additional info:"
 languages: "I can speak:"
-de: German
-it: Italian
-fr: French
-en: English
 warning: When ordering grosseries or medicine never provide money in advance, pay when you receive your goods acoording to the resulting bill.
 submit: Submit
