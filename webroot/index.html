@@ -29,6 +29,9 @@ $(document).ready(function() {
     if(location.host === "www.{{ domain() }}") {
         window.location.href = "{{ scheme() }}://" + lang_domain + ".{{ domain() }}";
     };
+    if(location.host === "0.0.0.0:8080") {
+        window.location.href = "{{ scheme() }}://" + lang_domain + ".localhost:8080";
+    };
 });
 </script>
 
