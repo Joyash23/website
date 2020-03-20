@@ -6,13 +6,22 @@
 
 In the context of the {helpgroup} it was identified the need to have a web site that can be easily used for the local general community contact within Switzerland. The goal is for people that might need help to easily locate people that is available to help them from the nearast location. With this approach we decrease the distribution/risk of contagium, and protect the group of people that is more vulnerable to the Covid19 oubtreak.
 
-== How to test
+== How to run
 
 ```bash
 git clone https://github.com/ViralHelp/website
 cd website
 pip install --user -r requirements.txt
 scripts/start.sh
+```
+
+== How to test
+
+For regular use, browse http://en.localhost:8080
+
+For testing the help provider join controller:
+```sh
+curl "http://en.localhost:8080/provider/join?email=YOUR_EMAIL&token=YOUR_TOKEN"
 ```
 
 == Known Similar Initatives

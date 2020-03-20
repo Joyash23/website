@@ -22,4 +22,5 @@ class Controller(object):
             json_data, JWT_SECRET, algorithm="HS256"
         )
         cookie["PROVIDER_DATA"]["max-age"] = 43200  # 30 days
+        print("OK")
 
