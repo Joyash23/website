@@ -10,15 +10,15 @@
     <title>{{ title }}</title>
 
     <!-- Custom Fonts -->
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap core CSS -->
 
     <!-- Theme CSS -->
-    <link href="css/grayscale.css" rel="stylesheet">
-    <link href="css/form.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link href="/css/form.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,7 +30,7 @@
   </head>
 
   <body>
-  
+
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -38,43 +38,6 @@
       {% block content %}{% endblock %}
     </div>
 
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
-
-    <script type="text/javascript" src="js/jquery.language.detection.min.js"></script>
-    <script>
-      $(document).ready(function() {
-        if(location.host === "{{ domain() }}") {
-          $(document).languageDetection({
-            useFullPaths: true,
-            languages: [
-              {
-                code: 'en',
-                path: '{{ scheme() }}://en.{{ domain() }}',
-                defaultLanguage: true
-              },
-              {
-                code: 'it',
-                path: '{{ scheme() }}://it.{{ domain() }}'
-              },
-              {
-                code: 'fr',
-                path: '{{ scheme() }}://fr.{{ domain() }}'
-              },
-              {
-                code: 'de',
-                path: '{{ scheme() }}://de.{{ domain() }}'
-              }
-            ]
-          });
-        }
-      });
-    </script>
-
-    <!-- Per page JS -->
-    <script src="js/{{ current_path() }}.js"></script>
 
   </body>
 </html>

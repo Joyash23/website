@@ -4,6 +4,7 @@
     <a class="language" href="{{ scheme() }}://it.{{ domain() }}" data-language="it">Italian</a> -
     <a class="language" href="{{ scheme() }}://en.{{ domain() }}" data-language="en">English</a>
 </div>
+
 <h1 class="centered">{{ slogan }}</h1>
 <div class="logo">
     <img src="images/ViralHelp.png"  height="200"></img>
@@ -11,7 +12,24 @@
 
 <div class="centered">
     <p>{{ instructions }}</p>
-    <button class="red_button" onclick="window.location.href = '/seeking_help';">{{ seeking_help }}</button>
-    <button class="green_button"  onclick="window.location.href = '/providing_help';">{{ providing_help }}</button>
+    <button class="red_button" onclick="window.location.href = '/help/request';">{{ seeking_help }}</button>
+    <button class="green_button"  onclick="window.location.href = '/provider/login';">{{ providing_help }}</button>
 </div>
+
+
+<script>
+$(document).ready(function() {
+    var userLang = navigator.language || navigator.userLanguage;
+    var shortLang = window.navigator.language.slice(0, 2);
+    var supported_languages = ['it', 'de', 'fr', 'en']
+    var lang_domain = 'en';
+    if(supported_languages.includes(shortLang)) {
+        lang_domain = shortLang
+    }
+    if(location.host === "www.{{ domain() }}") {
+        window.location.href = "{{ scheme() }}://" + lang_domain + ".{{ domain() }}";
+    };
+});
+</script>
+
 
