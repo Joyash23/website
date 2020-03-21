@@ -9,3 +9,7 @@ th, td {
 }
 
 tr:nth-child(even) {background-color: #f2f2f2;}
+
+.flexme.wide {
+    width: 800px;
+}
