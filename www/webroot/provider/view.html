@@ -1,60 +1,64 @@
-{% if session("email") == None %}
-Not logged in, go to the <a href="/">start page</a>
-{% else %}
-Welcome {{ session("email") }} !
+<div class="box wide">
+    <div class="welcome">
+        {% if session("email") == None %}
+        Not logged in, go to the <a href="/">start page</a>
+        {% else %}
+        Welcome {{ session("email") }} !
+    </div>
 
-<table class="flexme wide" id="table">
-    <thead>
-        <tr>
-            <th width="100">Name</th>
-            <th width="100">Email</th>
-            <th width="100">Phone</th>
-            <th width="100">Language</th>
-            <th width="100">ZIP Code</th>
-            <th width="100">Categories</th>
-            <th width="100">Additional Info</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr id="test">
-            <td></td>
-        </tr>
-    </tbody>
-</table>
+    <table class="flexme wide" id="table">
+        <thead>
+            <tr>
+                <th width="100">Name</th>
+                <th width="100">Email</th>
+                <th width="100">Phone</th>
+                <th width="100">Language</th>
+                <th width="100">ZIP Code</th>
+                <th width="100">Categories</th>
+                <th width="100">Additional Info</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="test">
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
 
 
-<script>
-    $(document).ready(function () {
-        var options = {
-            url: "{{ env['API_URL'] }}/provider/view?email={{ session('email') }}",
-            success: showResponse,  // post-submit callback
-            error: showError,
-            dataType: "json",
-        };
+    <script>
+        $(document).ready(function () {
+            var options = {
+                url: "{{ env['API_URL'] }}/provider/view?email={{ session('email') }}",
+                success: showResponse,  // post-submit callback
+                error: showError,
+                dataType: "json",
+            };
 
-        $.ajax(options);
+            $.ajax(options);
 
-        function showResponse(responseText, statusText, xhr, $form) {
-            var table = $("#table tbody");
+            function showResponse(responseText, statusText, xhr, $form) {
+                var table = $("#table tbody");
 
-            $.each(responseText, function (idx, elem) {
-                table.append("<tr>" + buildTableCell(elem) + "</tr>");
-            });
-        }
+                $.each(responseText, function (idx, elem) {
+                    table.append("<tr>" + buildTableCell(elem) + "</tr>");
+                });
+            }
 
-        function showError(responseText, statusText, xhr, $form) {
-            alert("Error: " + xhr);
-        }
+            function showError(responseText, statusText, xhr, $form) {
+                alert("Error: " + xhr);
+            }
 
-        function buildTableCell(elem) {
-            return "<td>" + elem.name + "</td> \
+            function buildTableCell(elem) {
+                return "<td>" + elem.name + "</td> \
                     <td>" + elem.email + "</td> \
                     <td>" + elem.phone + "</td> \
                     <td>" + elem.language + "</td> \
                     <td>" + elem.zipcode + "</td> \
                     <td>" + elem.category + "</td> \
                     <td>" + elem.additional_info + "</td>"
-        }
-    });
-</script>
-{% endif %}
+            }
+        });
+    </script>
+    {% endif %}
+</div>

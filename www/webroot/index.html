@@ -1,42 +1,42 @@
-<div class="language">
-    <a class="language" href="{{ scheme() }}://de.{{ domain() }}" data-language="de">German</a> -
-    <a class="language" href="{{ scheme() }}://fr.{{ domain() }}" data-language="fr">French</a> -
-    <a class="language" href="{{ scheme() }}://it.{{ domain() }}" data-language="it">Italian</a> -
-    <a class="language" href="{{ scheme() }}://en.{{ domain() }}" data-language="en">English</a>
+<div class="box">
+    <div class="language">
+        <a class="language" href="{{ scheme() }}://de.{{ domain() }}" data-language="de">German</a> -
+        <a class="language" href="{{ scheme() }}://fr.{{ domain() }}" data-language="fr">French</a> -
+        <a class="language" href="{{ scheme() }}://it.{{ domain() }}" data-language="it">Italian</a> -
+        <a class="language" href="{{ scheme() }}://en.{{ domain() }}" data-language="en">English</a>
+    </div>
+
+    <h1 class="centered">{{ slogan }}</h1>
+    <div class="logo">
+        <img src="images/ViralHelp.png" height="200"></img>
+    </div>
+
+    <div class="centered">
+        <p>{{ instructions }}</p>
+        <button class="red_button" onclick="window.location.href = '/help/request';">{{ seeking_help }}</button>
+        {% if session("email") == None %}
+        <button class="green_button" onclick="window.location.href = '/provider/login';">{{ providing_help }}</button>
+        {% else %}
+        <button class="green_button" onclick="window.location.href = '/provider/view';">{{ providing_help }}</button>
+        {% endif %}
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+            var userLang = navigator.language || navigator.userLanguage;
+            var shortLang = window.navigator.language.slice(0, 2);
+            var supported_languages = ['it', 'de', 'fr', 'en']
+            var lang_domain = 'en';
+            if (supported_languages.includes(shortLang)) {
+                lang_domain = shortLang
+            }
+            if (location.host === "www.{{ domain() }}") {
+                window.location.href = "{{ scheme() }}://" + lang_domain + ".{{ domain() }}";
+            };
+            if (location.host === "0.0.0.0:8080") {
+                window.location.href = "{{ scheme() }}://" + lang_domain + ".localhost:8080";
+            };
+        });
+    </script>
 </div>
-
-<h1 class="centered">{{ slogan }}</h1>
-<div class="logo">
-    <img src="images/ViralHelp.png"  height="200"></img>
-</div>
-
-<div class="centered">
-    <p>{{ instructions }}</p>
-    <button class="red_button" onclick="window.location.href = '/help/request';">{{ seeking_help }}</button>
-    {% if session("email") == None %}
-    <button class="green_button"  onclick="window.location.href = '/provider/login';">{{ providing_help }}</button>
-    {% else %}
-    <button class="green_button"  onclick="window.location.href = '/provider/view';">{{ providing_help }}</button>
-    {% endif %}
-</div>
-
-
-<script>
-$(document).ready(function() {
-    var userLang = navigator.language || navigator.userLanguage;
-    var shortLang = window.navigator.language.slice(0, 2);
-    var supported_languages = ['it', 'de', 'fr', 'en']
-    var lang_domain = 'en';
-    if(supported_languages.includes(shortLang)) {
-        lang_domain = shortLang
-    }
-    if(location.host === "www.{{ domain() }}") {
-        window.location.href = "{{ scheme() }}://" + lang_domain + ".{{ domain() }}";
-    };
-    if(location.host === "0.0.0.0:8080") {
-        window.location.href = "{{ scheme() }}://" + lang_domain + ".localhost:8080";
-    };
-});
-</script>
-
-

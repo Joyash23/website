@@ -1,39 +1,43 @@
-<form id="myForm" action="{{ env['API_URL'] }}/provider/register " method="post">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email">
-    <p>{{ description }}</p>
-    <div class="centered">
-        <button id="x" class="green_button">{{ submit }}</button>
-    </div>
-    <input type="hidden" id="lang" name="lang" value="{{ language() }}">
-</form>
-<div id="failed" class="hidden centered">{{failed}}</div>
-<div id="success" class="hidden centered">{{success}}</div>
+<div class="box">
+    <form id="myForm" action="{{ env['API_URL'] }}/provider/register " method="post">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <p>{{ description }}</p>
+        <div class="centered">
+            <button id="x" class="green_button">{{ submit }}</button>
+        </div>
+        <input type="hidden" id="lang" name="lang" value="{{ language() }}">
+    </form>
+    <div id="failed" class="hidden centered">{{failed}}</div>
+    <div id="success" class="hidden centered">{{success}}</div>
 
-<!-- Plugin JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"
+        integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i"
+        crossorigin="anonymous"></script>
 
-<script>
-// wait for the DOM to be loaded
-$(function() {
-    var options = {
-        success:       showResponse,  // post-submit callback
-        error:         showError,
-    }
-    // bind 'myForm' and provide a simple callback function
-    $('#myForm').ajaxForm(options);
+    <script>
+        // wait for the DOM to be loaded
+        $(function () {
+            var options = {
+                success: showResponse,  // post-submit callback
+                error: showError,
+            }
+            // bind 'myForm' and provide a simple callback function
+            $('#myForm').ajaxForm(options);
 
-    // post-submit callback 
-    function showResponse(responseText, statusText, xhr, $form)  {
-        $("#failed").hide("slow");
-        $("#myForm").hide("slow");
-        $("#success").show("slow")
-    }
+            // post-submit callback 
+            function showResponse(responseText, statusText, xhr, $form) {
+                $("#failed").hide("slow");
+                $("#myForm").hide("slow");
+                $("#success").show("slow")
+            }
 
-    function showError(responseText, statusText, xhr, $form)  {
-        $("#failed").show("slow");
-    }
-});
-</script>
+            function showError(responseText, statusText, xhr, $form) {
+                $("#failed").show("slow");
+            }
+        });
+    </script>
+</div>

@@ -49,6 +49,10 @@ body
 	transform: skew(5deg) rotate(5deg);
 }
 
+.wide {
+	width: 1000px;
+}
+
 h1, h2
 {
 	font-size: 1.6em;
@@ -122,4 +126,9 @@ p.strong {
 
 .hidden {
 	display: none;
+}
+
+.welcome {
+	margin: 0 0 20px 8px;
+	font-weight: bold;
 }
