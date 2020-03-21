@@ -1,0 +1,24 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    kubernetes.io/tls-acme: "true"
+    openshift.io/host.generated: "true"
+  creationTimestamp: null
+  labels:
+    app: static-page
+  name: de.viralhelp.ch
+spec:
+  host: de.viralhelp.ch
+  port:
+    targetPort: 8080-tcp
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: static-page
+    weight: 100
+  wildcardPolicy: None
+status:
+  ingress: null
