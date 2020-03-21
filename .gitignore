@@ -133,4 +133,4 @@ dmypy.json
 # pytype static type analyzer
 .pytype/
 
-manual/yamlfu.github.io/
+api/test.db

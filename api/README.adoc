@@ -1,0 +1,11 @@
+= API
+
+== How to start
+```sh
+pip install --user quickweb
+scripts/start.sh
+```
+== How to test
+```
+curl http://localhost:9090/provider/register -d "email=EMAIL_ADDRESS&lang=en"
+```

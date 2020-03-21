@@ -4,7 +4,11 @@
     <input type="email" id="email" name="email">
     <label for="fname">{{name}}</label>
     <input type="text" id="fname" name="fname" required>
-    <label for="zipcode" maxlength="4" required>{{zipcode}}</label>
+    <label for="zipcode"
+        pattern="[0-9]{4}"
+        maxlength="4"
+        required>
+        {{zipcode}}</label>
     <input type="text" id="zipcode" name="zipcode" required>
     <label for="phone">{{phoneNumber}}</label>
     <input type="tel" id="phone" name="phone"

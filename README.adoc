@@ -12,10 +12,18 @@ In the context of the {helpgroup} it was identified the need to have a web site 
 git clone https://github.com/ViralHelp/website
 cd website
 pip install --user -r requirements.txt
-scripts/start.sh
+
+# Open two terminals
+
+# Run the www on one terminal
+scripts/start_www.sh
+
+# Run the api on another terminal
+scripts/start_api.sh
+
 ```
 
-== How to test
+== How to test (www)
 
 For regular use, browse http://en.localhost:8080
 
@@ -24,15 +32,9 @@ For testing the help provider join controller:
 curl "http://en.localhost:8080/provider/join?email=YOUR_EMAIL&token=YOUR_TOKEN"
 ```
 
-== Known Similar Initatives
+== How to test (api)
+curl http://localhost:9090/provider/register -d "email=EMAIL_ADDRESS&lang=en"
 
-.World wide examples
-|===
-|Region|Link |Observations
-
-| Switzerland | https://www.hilf-jetzt.ch/ | German only, group finding
-| Germany| https://www.quarantaenehelden.org | German only
-|===
 
 == Desired Features
 

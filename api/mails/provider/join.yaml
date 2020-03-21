@@ -1,0 +1,8 @@
+sender: <noreply@viralhelp.ch>
+subject: Welcome to ViralHelp
+message: |
+  Welcome to the ViralHelp initative.
+
+  Use the link below to setup your profile and browse for help requests within your area.
+
+  {{ action_link }}
