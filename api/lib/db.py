@@ -1,16 +1,26 @@
 import os
 import sqlite3
+from collections import namedtuple
+
 
 DBSTRING = os.getenv("DBNAME")
 
 
+def namedtuple_factory(cursor, row):
+    """Returns sqlite rows as named tuples."""
+    fields = [col[0] for col in cursor.description]
+    Row = namedtuple("Row", fields)
+    return Row(*row)
+
+
 def get_provider(email, token=None):
-    sql = "SELECT email FROM providers WHERE email=?"
+    sql = "SELECT email, language, category, zipcode FROM providers WHERE email=?"
     sql_args = [email]
     if token:
         sql += " AND token=?"
         sql_args.append(token)
     with sqlite3.connect(DBSTRING) as connection:
+        connection.row_factory = namedtuple_factory
         cursor = connection.execute(sql, sql_args)
     return cursor.fetchone()
 
@@ -18,7 +28,7 @@ def get_provider(email, token=None):
 def insert_or_replace_provider(email, lang, token):
 
     with sqlite3.connect(DBSTRING) as connection:
-        cursor = connection.execute(
+        connection.execute(
             "INSERT OR REPLACE INTO providers(email, lang, token) " "VALUES(?, ?, ?)",
             [email, lang, token],
         )
@@ -43,7 +53,7 @@ def insert_seeker_request(
 ):
 
     with sqlite3.connect(DBSTRING) as connection:
-        cursor = connection.execute(
+        connection.execute(
             "INSERT INTO seeker_requests"
             "(name, email, phone, language, zipcode, category, additional_info) "
             "VALUES(?, ?, ?, ?, ?, ?, ?)",
@@ -52,11 +62,13 @@ def insert_seeker_request(
     return "OK"
 
 
-def get_help_requests():
+def get_help_requests(email):
+    provider = get_provider(email)
     requests_list = []
-    sql = "SELECT * FROM seeker_requests"
+    sql = "SELECT * FROM seeker_requests WHERE zipcode=?"
+    sql_args = [provider.zipcode]
     with sqlite3.connect(DBSTRING) as connection:
-        cursor = connection.execute(sql)
+        cursor = connection.execute(sql, sql_args)
         names = [description[0] for description in cursor.description]
     for row in cursor.fetchall():
         dict_row = {}

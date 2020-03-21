@@ -4,6 +4,9 @@
         Not logged in, go to the <a href="/">start page</a>
         {% else %}
         Welcome {{ session("email") }} !
+        <br>
+        <p>You can change your <A HREF="/provider/profile">profile</A> settings to view other requests.</p>
+
     </div>
 
     <table class="flexme wide" id="table">
