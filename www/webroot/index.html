@@ -13,11 +13,11 @@
 
     <div class="centered">
         <p>{{ instructions }}</p>
-        <button class="red_button" onclick="window.location.href = '/help/request';">{{ seeking_help }}</button>
+        <button class="red_button half-width" onclick="window.location.href = '/help/request';">{{ seeking_help }}</button>
         {% if session("email") == None %}
-        <button class="green_button" onclick="window.location.href = '/provider/login';">{{ providing_help }}</button>
+        <button class="green_button half-width" onclick="window.location.href = '/provider/login';">{{ providing_help }}</button>
         {% else %}
-        <button class="green_button" onclick="window.location.href = '/provider/view';">{{ providing_help }}</button>
+        <button class="green_button half-width" onclick="window.location.href = '/provider/view';">{{ providing_help }}</button>
         {% endif %}
     </div>
 

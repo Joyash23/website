@@ -118,6 +118,14 @@ p.strong {
   text-transform: uppercase;
 }
 
+.half-width {
+	width: calc(50% - 10px);
+}
+
+.full-width {
+	width: 100%;
+}
+
 .warning {
   font-weight: bold;
   color: #cc0000;

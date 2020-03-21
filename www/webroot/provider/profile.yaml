@@ -1,10 +1,9 @@
 intro:
   The information set on your profile will be used to filter the help requests visible to you
 
-
-help_with: Need help with
+help_with: Can help with
 
 submit: View help requests
-zipcode: "Enter your zip Code:"
+zipcode: "Enter your ZIP Code:"
 
 notify_email: Receive an email when a new help request is submitted
