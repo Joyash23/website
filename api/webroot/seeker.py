@@ -1,5 +1,6 @@
-from quickweb import controller
 import re
+from quickweb import controller
+from cherrypy import HTTPError
 
 
 class Controller(object):
@@ -12,6 +13,9 @@ class Controller(object):
         category = kwargs.get("category", [])
         language = kwargs.get("language", [])
         additional_info = kwargs.get("additional_info", None)
+
+        if controller.lib.db.check_zip_code(zipcode) is None:
+            raise HTTPError(400, "Uknown zip code")
         controller.lib.db.insert_seeker_request(
             fname,
             email,

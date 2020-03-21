@@ -64,3 +64,11 @@ def get_help_requests():
             dict_row[field_name] = row[i]
         requests_list.append(dict_row)
     return requests_list
+
+
+def check_zip_code(zip_code):
+    sql = "SELECT code FROM ZIP_CODES WHERE code=?"
+    sql_args = [zip_code]
+    with sqlite3.connect("zipcodes.db") as connection:
+        cursor = connection.execute(sql, sql_args)
+    return cursor.fetchone()
