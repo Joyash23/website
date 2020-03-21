@@ -1,13 +1,10 @@
 intro:
-  The following information will be used to let you search requests for help on your area
+  The information set on your profile will be used to filter the help requests visible to you
 
-languages: "I can speak:"
 
-de: German
-it: Italian
-fr: French
-en: English
-
+help_with: Need help with
 
 submit: View help requests
 zipcode: "Enter your zip Code:"
+
+notify_email: Receive an email when a new help request is submitted
