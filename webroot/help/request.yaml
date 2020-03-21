@@ -1,10 +1,15 @@
 description: In order to get help you must provide accurate information.
-email: "Enter your email:"
+email: "Enter your email (Optional):"
 name: "Enter your name:"
 zipcode: "Enter your zip Code:"
-phoneNumber: "Enter your phone number ((0)xxxxxxx):"
+phoneNumber: "Enter your phone number ((0)xxxxxxxxx):"
 with: "Seeking help with:"
 additional_info: "Additional info:"
 languages: "I can speak:"
 warning: When ordering grosseries or medicine never provide money in advance, pay when you receive your goods acoording to the resulting bill.
 submit: Submit
+
+failed: Error submitting request
+success:
+  You will be conctacted when someone becomes available to help on your residence area.
+
