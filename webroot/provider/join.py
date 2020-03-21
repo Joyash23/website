@@ -1,12 +1,10 @@
 from quickweb import controller
 from os import environ
 import urllib
-import jwt
 import json
 import cherrypy
-
-
-JWT_SECRET = environ["JWT_SECRET"]
+from cherrypy import HTTPError
+from urllib.error import URLError
 
 
 class Controller(object):
@@ -14,7 +12,10 @@ class Controller(object):
     def index(self, email, token):
         API_URL = environ["API_URL"]
         url = f"{API_URL}/provider/check?email={email}&token={token}"
-        request = urllib.request.urlopen(url)
+        try:
+            request = urllib.request.urlopen(url)
+        except URLError:
+            raise HTTPError(500, "Error calling the API server")
         data = request.read().decode("utf-8")
         json_data = json.loads(data)
         cherrypy.session['email'] = json_data['email']
