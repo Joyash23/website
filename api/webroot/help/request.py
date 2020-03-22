@@ -20,7 +20,10 @@ class Controller(object):
             raise HTTPError(400, "Uknown zip code")
 
         if type(language) in (tuple, list):
-            language = "|".join(language)
+            if language.__len__() == 0:
+                language = controller.get_lang()
+            else:
+                language = "|".join(language)
 
         if type(category) in (tuple, list):
             category = "|".join(category)
@@ -38,15 +41,8 @@ class Controller(object):
             zipcode, language
         )
         for provider in providers:
-            view_help_requests_link = self.generate_view_help_requests_link(
-                provider.lang
-            )
-            controller.lib.mail.send(
-                email,
-                action_name,
-                provider.lang,
-                view_help_requests_link=view_help_requests_link,
-            )
+            view_help_requests_link = self.generate_view_help_requests_link(provider.lang)
+            controller.lib.mail.send(provider.email, action_name, provider.lang, view_help_requests_link=view_help_requests_link)
 
     def generate_view_help_requests_link(self, lang):
         c = controller.helpers()
