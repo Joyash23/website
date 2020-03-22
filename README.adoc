@@ -33,7 +33,7 @@ curl "http://en.localhost:8080/provider/join?email=YOUR_EMAIL&token=YOUR_TOKEN"
 ```
 
 == How to test (api)
-curl http://localhost:9090/provider/register -d "email=EMAIL_ADDRESS&lang=en"
+curl http://localhost:9090/provider/login -d "email=EMAIL_ADDRESS&lang=en"
 
 
 == Desired Features
