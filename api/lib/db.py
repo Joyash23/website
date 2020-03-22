@@ -1,7 +1,7 @@
 import os
 import sqlite3
+import json
 from collections import namedtuple
-
 
 DBSTRING = os.getenv("DBNAME")
 
@@ -11,6 +11,14 @@ def namedtuple_factory(cursor, row):
     fields = [col[0] for col in cursor.description]
     Row = namedtuple("Row", fields)
     return Row(*row)
+
+
+def dict_factory(cursor, row):
+    names = [description[0] for description in cursor.description]
+    dict_row = {}
+    for i, field_name in enumerate(names):
+        dict_row[field_name] = row[i]
+    return dict_row
 
 
 def get_provider(email, token=None):
@@ -64,19 +72,13 @@ def insert_seeker_request(
 
 def get_help_requests(email):
     provider = get_provider(email)
-    requests_list = []
     sql = "SELECT * FROM seeker_requests WHERE zipcode=?"
     sql_args = [provider.zipcode]
     with sqlite3.connect(DBSTRING) as connection:
+        connection.row_factory = dict_factory
         cursor = connection.execute(sql, sql_args)
-        names = [description[0] for description in cursor.description]
-    for row in cursor.fetchall():
-        dict_row = {}
-        for i, field_name in enumerate(names):
-            dict_row[field_name] = row[i]
-        requests_list.append(dict_row)
-    return requests_list
-
+        result = cursor.fetchall()
+    return result
 
 def check_zip_code(zip_code):
     sql = "SELECT code FROM ZIP_CODES WHERE code=?"
