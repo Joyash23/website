@@ -8,7 +8,7 @@ class Controller(object):
         self.email_regex = re.compile(r"[^@]+@[^@]+\.[^@]+")
 
     @controller.publish
-    def request(self, fname, zipcode, phone, **kwargs):
+    def index(self, fname, zipcode, phone, **kwargs):
         email = kwargs.get("email", None)
         category = kwargs.get("category", [])
         language = kwargs.get("language", [])
