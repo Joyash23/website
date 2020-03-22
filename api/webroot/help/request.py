@@ -34,11 +34,7 @@ class Controller(object):
         providers = self.find_providers_by_zipcode_and_language_to_notify(zipcode, language)
         for provider in providers:
             view_help_requests_link = self.generate_view_help_requests_link(provider.lang)
-            print("-----------")
-            print(provider.lang)
-            print(view_help_requests_link)
             controller.lib.mail.send(email, action_name, provider.lang, view_help_requests_link=view_help_requests_link)
-            print("-----------")
 
     def generate_view_help_requests_link(self, lang):
         c = controller.helpers()
@@ -50,10 +46,7 @@ class Controller(object):
 
     def find_providers_by_zipcode_and_language_to_notify(self, zipcode, language):
         providers = controller.lib.db.get_providers(zipcode, 1)
-        print(providers)
         providers = list(filter(self.speaks_one_of_requested_languages(language), providers))
-        print("Filtered providers by language")
-        print(providers)
         return providers
 
     def speaks_one_of_requested_languages(self, language):
