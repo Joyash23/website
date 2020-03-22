@@ -1,6 +1,6 @@
 <div class="box">
     <label>{{intro}}</label>
-    <form id="myForm" action="{{ env['API_URL'] }}/provider/profile " method="post">
+    <form id="myForm" action="/api/provider/profile" method="post">
         <input class="hidden" type="text" id="email" name="email" value="{{ session('email') }}">
         <label for="zipcode" maxlength="4">{{zipcode}}</label>
         <input type="text" id="zipcode" name="zipcode" required>
