@@ -1,6 +1,5 @@
 import os
 import sqlite3
-import json
 from collections import namedtuple
 
 DBSTRING = os.getenv("DBNAME")
@@ -31,6 +30,14 @@ def get_provider(email, token=None):
         connection.row_factory = namedtuple_factory
         cursor = connection.execute(sql, sql_args)
     return cursor.fetchone()
+
+def get_providers(zipcode, notify):
+    sql = "SELECT email, lang, language, category, zipcode FROM providers WHERE zipcode=? AND notify=?"
+    sql_args = [zipcode, notify]
+    with sqlite3.connect(DBSTRING) as connection:
+        connection.row_factory = namedtuple_factory
+        cursor = connection.execute(sql, sql_args)
+    return cursor.fetchall()
 
 
 def insert_or_replace_provider(email, lang, token):
