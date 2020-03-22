@@ -3,22 +3,15 @@ kind: Route
 metadata:
   annotations:
     kubernetes.io/tls-acme: "true"
-    openshift.io/host.generated: "true"
-  creationTimestamp: null
-  labels:
-    app: static-page
-  name: de.viralhelp.ch
+  name: ${DOMAIN}.viralhelp.ch
 spec:
-  host: de.viralhelp.ch
+  host: ${DOMAIN}.viralhelp.ch
   port:
-    targetPort: 8080-tcp
+    targetPort: http
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
   to:
     kind: Service
-    name: static-page
-    weight: 100
+    name: viralhelp-website
   wildcardPolicy: None
-status:
-  ingress: null
