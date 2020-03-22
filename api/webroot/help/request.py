@@ -16,13 +16,20 @@ class Controller(object):
 
         if controller.lib.db.check_zip_code(zipcode) is None:
             raise HTTPError(400, "Uknown zip code")
+
+        if type(language) in (tuple, list):
+            language = "|".join(language)
+
+        if type(category) in (tuple, list):
+            category = "|".join(category)
+
         controller.lib.db.insert_seeker_request(
             fname,
             email,
             phone,
-            "|".join(language),
+            language,
             zipcode,
-            "|".join(category),
+            category,
             additional_info,
         )
         return "OK"
