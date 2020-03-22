@@ -6,7 +6,7 @@ import json
 
 API_URL = environ["API_URL"]
 
-ANONYMOUS_PATHS = ["api/help/request", "provider/login"]
+ANONYMOUS_PATHS = ["help/request", "provider/login"]
 
 
 class Controller(object):

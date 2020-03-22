@@ -7,12 +7,16 @@ import cherrypy
 
 
 class Controller(object):
+
     def __init__(self):
         self.email_regex = re.compile(r"[^@]+@[^@]+\.[^@]+")
 
+    #@cherrypy.tools.json_out()
     @controller.publish
-    @cherrypy.tools.json_out()
-    def index(self, fname, zipcode, phone, **kwargs):
+    def default(self, *args, **kwargs):
+        fname = kwargs.get("fname", None)
+        zipcode = kwargs.get("zipcode", None)
+        phone = kwargs.get("phone", None)
         email = kwargs.get("email", None)
         category = kwargs.get("category", [])
         language = kwargs.get("language", [])
