@@ -41,8 +41,15 @@ class Controller(object):
             zipcode, language
         )
         for provider in providers:
-            view_help_requests_link = self.generate_view_help_requests_link(provider.lang)
-            controller.lib.mail.send(provider.email, action_name, provider.lang, view_help_requests_link=view_help_requests_link)
+            view_help_requests_link = self.generate_view_help_requests_link(
+                provider.lang
+            )
+            controller.lib.mail.send(
+                provider.email,
+                action_name,
+                provider.lang,
+                view_help_requests_link=view_help_requests_link,
+            )
 
     def generate_view_help_requests_link(self, lang):
         c = controller.helpers()
