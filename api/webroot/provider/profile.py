@@ -19,4 +19,4 @@ class Controller(object):
 
         # Read email from user session
         controller.lib.db.update_provider(email, zipcode, language, category, notify)
-        return json.dumps({"status": "OK "})
+        return json.dumps({"status": "OK"})

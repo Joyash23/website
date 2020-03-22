@@ -3,6 +3,7 @@ import json
 from quickweb import controller
 from cherrypy import HTTPError
 from os import environ
+import cherrypy
 
 
 class Controller(object):
@@ -10,6 +11,7 @@ class Controller(object):
         self.email_regex = re.compile(r"[^@]+@[^@]+\.[^@]+")
 
     @controller.publish
+    @cherrypy.tools.json_out()
     def index(self, fname, zipcode, phone, **kwargs):
         email = kwargs.get("email", None)
         category = kwargs.get("category", [])
@@ -33,7 +35,7 @@ class Controller(object):
         )
         self.notify_providers(email, language, zipcode)
 
-        return json.dumps({"status": "OK "})
+        return json.dumps({"status": "OK"})
 
     def notify_providers(self, email, language, zipcode):
         action_name = "provider/new_help_request"

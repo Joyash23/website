@@ -1,6 +1,7 @@
 from quickweb import controller
 from cherrypy import HTTPError
 import json
+import cherrypy
 
 
 class Controller(object):
