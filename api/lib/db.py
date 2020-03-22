@@ -31,6 +31,7 @@ def get_provider(email, token=None):
         cursor = connection.execute(sql, sql_args)
     return cursor.fetchone()
 
+
 def get_providers(zipcode, notify):
     sql = "SELECT email, lang, language, category, zipcode FROM providers WHERE zipcode=? AND notify=?"
     sql_args = [zipcode, notify]
@@ -54,10 +55,12 @@ def update_provider(email, zipcode, language, category, notify):
 
     notify = 1 if notify == "on" else 0
     with sqlite3.connect(DBSTRING) as connection:
-        sql = "UPDATE providers SET " \
-            "zipcode = ?, language = ?, category = ?," \
-            "notify = ?" \
+        sql = (
+            "UPDATE providers SET "
+            "zipcode = ?, language = ?, category = ?,"
+            "notify = ?"
             " WHERE email = ?"
+        )
         sql_args = [zipcode, language, category, notify, email]
         connection.execute(sql, sql_args)
     return "OK"
@@ -86,6 +89,7 @@ def get_help_requests(email):
         cursor = connection.execute(sql, sql_args)
         result = cursor.fetchall()
     return result
+
 
 def check_zip_code(zip_code):
     sql = "SELECT code FROM ZIP_CODES WHERE code=?"

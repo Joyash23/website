@@ -32,7 +32,7 @@
     <script>
         $(document).ready(function () {
             var options = {
-                url: "{{ env['API_URL'] }}/provider/view?email={{ session('email') }}",
+                url: "api/provider/view?email={{ session('email') }}",
                 success: showResponse,  // post-submit callback
                 error: showError,
                 dataType: "json",

@@ -1,4 +1,5 @@
 from quickweb import controller
+import json
 
 
 class Controller(object):
@@ -18,4 +19,5 @@ class Controller(object):
 
         # Read email from user session
         controller.lib.db.update_provider(email, zipcode, language, category, notify)
-        return "OK"
+        return json.dumps({"status": "OK "})
+
