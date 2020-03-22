@@ -1,0 +1,6 @@
+sender: <noreply@viralhelp.ch>
+subject: Help is needed
+message: |
+  Use the link below to see all the people that are waiting for your help!
+
+  {{ view_help_requests_link }}
