@@ -5,6 +5,8 @@ import requests
 
 API_URL = environ["API_URL"]
 
+ANONYMOUS_PATHS = ["api/help/request", "provider/login"]
+
 
 class Controller(object):
     @controller.publish
@@ -13,7 +15,7 @@ class Controller(object):
         if kwargs:
             kwargs["lang"] = controller.get_lang()
         if controller.method() == "POST":
-            if path != "provider/login":
+            if path not in ANONYMOUS_PATHS:
                 email = controller.get_session_value("email")
                 if not email:
                     raise HTTPError(400, "Session is invalid")
