@@ -5,6 +5,9 @@ import json
 import cherrypy
 from cherrypy import HTTPError
 from urllib.error import URLError
+import jwt
+
+JWT_SECRET = environ['JWT_SECRET']
 
 
 class Controller(object):
@@ -19,10 +22,11 @@ class Controller(object):
         data = request.read().decode("utf-8")
         json_data = json.loads(data)
         cherrypy.session["email"] = json_data["email"]
-        # encoded_data = jwt.encode(
-        #    json_data, JWT_SECRET, algorithm="HS256"
-        # )
-        # cookie["PROVIDER_DATA"] = encoded_data
-        # print("JOIN", encoded_data.decode('utf-8'))
+        encoded_data = jwt.encode(
+            json_data, JWT_SECRET, algorithm="HS256"
+        )
+        cookie = cherrypy.response.cookie
+        cookie["PROVIDER_DATA"] = encoded_data
+        print("JOIN", encoded_data.decode('utf-8'))
         # cookie["PROVIDER_DATA"]["max-age"] = 43200  # 30 days
         return controller.redirect("/provider/profile")

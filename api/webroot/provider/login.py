@@ -7,6 +7,9 @@ import json
 import cherrypy
 
 
+SMTP_SERVER = environ.get("SMTP_SERVER")
+
+
 class Controller(object):
     def __init__(self):
         self.email_regex = re.compile(r"[^@]+@[^@]+\.[^@]+")
@@ -23,7 +26,10 @@ class Controller(object):
         controller.lib.db.insert_or_replace_provider(email, lang, token)
         action_link = self.gen_action_link(action_name, email, lang, token)
         controller.lib.mail.send(email, action_name, lang, action_link=action_link)
-        return json.dumps({"status": "OK"})
+        if SMTP_SERVER:
+            return json.dumps({"status": "OK"})
+        else:
+            return json.dumps({"status": "INFO", "url": action_link})
 
     def gen_action_link(self, action, email, lang, token):
         c = controller.helpers()

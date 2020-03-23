@@ -11,6 +11,8 @@ from jinja2.exceptions import TemplateNotFound
 MAILS_DIR = "mails"
 template_engine = TemplateEngine(MAILS_DIR)
 
+SMTP_SERVER = environ.get("SMTP_SERVER")
+
 
 def send(email, filename, lang, **kwargs):
     # must check for available lang templates before calling send_raw
@@ -36,9 +38,8 @@ def send_raw(email, filename, lang, **kwargs):
     msg.set_content(mail_data["message"])
 
     # Send the message via  SMTP server.
-    smtp_server = environ.get("SMTP_SERVER")
-    if smtp_server:
-        s = smtplib.SMTP(smtp_server)
+    if SMTP_SERVER:
+        s = smtplib.SMTP(SMTP_SERVER)
         s.send_message(msg)
         s.quit()
     else:
