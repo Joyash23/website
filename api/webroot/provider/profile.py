@@ -1,9 +1,11 @@
 from quickweb import controller
 import json
+import cherrypy
 
 
 class Controller(object):
     @controller.publish
+    @cherrypy.tools.json_out()
     def index(self, *args, **kwargs):
         zipcode = int(kwargs.get("zipcode"))
         email = kwargs.get("email")

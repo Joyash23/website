@@ -22,6 +22,10 @@ CREATE TABLE IF NOT EXISTS seeker_requests
 ]
 
 
+def start():
+    setup_database()
+
+
 def setup_database():
     """
     Create the `user_string` table in the database
@@ -31,11 +35,3 @@ def setup_database():
     with sqlite3.connect(DB_STRING) as con:
         for sql in CREATE_SQL:
             con.execute(sql)
-
-
-def cleanup_database():
-    """
-    Destroy the `user_string` table from the database
-    on server shutdown.
-    """
-    pass
