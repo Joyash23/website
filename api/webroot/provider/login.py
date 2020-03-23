@@ -22,7 +22,6 @@ class Controller(object):
         action_name = "provider/join"
         controller.lib.db.insert_or_replace_provider(email, lang, token)
         action_link = self.gen_action_link(action_name, email, lang, token)
-        print("ACTION_LINK:", action_link)
         controller.lib.mail.send(email, action_name, lang, action_link=action_link)
         return json.dumps({"status": "OK"})
 

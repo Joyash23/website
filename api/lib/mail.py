@@ -35,8 +35,11 @@ def send_raw(email, filename, lang, **kwargs):
     msg["To"] = email
     msg.set_content(mail_data["message"])
 
-    # Send the message via our own SMTP server.
-    smtp_server = environ.get("SMTP_SERVER", "localhost")
-    s = smtplib.SMTP(smtp_server)
-    s.send_message(msg)
-    s.quit()
+    # Send the message via  SMTP server.
+    smtp_server = environ.get("SMTP_SERVER")
+    if smtp_server:
+        s = smtplib.SMTP(smtp_server)
+        s.send_message(msg)
+        s.quit()
+    else:
+        print(msg)
