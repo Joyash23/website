@@ -7,32 +7,34 @@
     </div>
 
     <div class="logo">
-        <img src="images/ViralHelp.png" height="400"></img>
+        <img src="images/ViralHelp.png" height="300"></img>
+    </div>
+    <div class="logo2 centered">
         <img src="images/people2people.png" width="400"></img>
     </div>
 
     <p class="centered">
-        <span class="strong" id="provider_count">0</span>
-        {{ providers_registered }}
+        <span class="strong" id="provider_count">0</span> {{ providers_registered }}
     </p>
-    <p  class="centered">
-        <span class="strong" id="help_requests_count">0</span> 
-        {{ help_requests_open }}
+    <p class="centered">
+        <span class="strong" id="help_requests_count">0</span> {{ help_requests_open }}
     </p>
+
+    {% if session("email") == None %}
+        {% set provider_part = "login" %}
+    {% else %}
+        {% set provider_part = "view" %}
+    {% endif %}
 
     <div class="centered">
         <p>{{ instructions }}</p>
         <button class="red_button half-width" onclick="window.location.href = '/help/request';">{{ seeking_help }}</button>
-        {% if session("email") == None %}
-        <button class="green_button half-width" onclick="window.location.href = '/provider/login';">{{ providing_help }}</button>
-        {% else %}
-        <button class="green_button half-width" onclick="window.location.href = '/provider/view';">{{ providing_help }}</button>
-        {% endif %}
+        <button class="green_button half-width" onclick="window.location.href = '/provider/{{ provider_part }}';">{{ providing_help }}</button>
     </div>
 
     <p>If you would like to help us with the site development please join us on <a href="https://join.slack.com/t/viralhelp/shared_invite/zt-czifsfsw-oZFUBLcRHjen0ESgHrseZQ">Slack</a> </p>
 
     <script>
-    {% include "_index.js" %}
+        { % include "_index.js" % }
     </script>
 </div>
