@@ -72,7 +72,7 @@ def insert_seeker_request(
 
     with sqlite3.connect(DBSTRING) as connection:
         connection.execute(
-            "INSERT INTO seeker_requests"
+            "INSERT INTO help_requests"
             "(name, email, phone, language, zipcode, category, additional_info) "
             "VALUES(?, ?, ?, ?, ?, ?, ?)",
             [name, email, phone, language, zipcode, category, additional_info],
@@ -82,7 +82,7 @@ def insert_seeker_request(
 
 def get_help_requests(email):
     provider = get_provider(email)
-    sql = "SELECT * FROM seeker_requests WHERE zipcode=?"
+    sql = "SELECT * FROM help_requests WHERE zipcode=?"
     sql_args = [provider.zipcode]
     with sqlite3.connect(DBSTRING) as connection:
         connection.row_factory = dict_factory
@@ -96,4 +96,18 @@ def check_zip_code(zip_code):
     sql_args = [zip_code]
     with sqlite3.connect("zipcodes.db") as connection:
         cursor = connection.execute(sql, sql_args)
+    return cursor.fetchone()
+
+
+def get_providers_count():
+    sql = "SELECT COUNT(*) FROM providers WHERE zipcode > 1"
+    with sqlite3.connect(DBSTRING) as connection:
+        cursor = connection.execute(sql)
+    return cursor.fetchone()
+
+
+def get_help_requests_count():
+    sql = "SELECT COUNT(*) FROM help_requests"
+    with sqlite3.connect(DBSTRING) as connection:
+        cursor = connection.execute(sql)
     return cursor.fetchone()

@@ -7,13 +7,19 @@ JWT_SECRET = environ["JWT_SECRET"]
 
 @cherrypy.tools.register("before_handler", priority=60)
 def provider_cookie():
-    cookie = cherrypy.request.cookie
+
+    # Was authenticated in the current session ?
+    if "email" in cherrypy.session:
+        return
+
+    # An authentication cookie is set ?
     try:
-        jwt_token = cookie["PROVIDER_DATA"].value
-    except KeyError:    # Cookie is not set
+        jwt_token = cherrypy.request.cookie["PROVIDER_DATA"].value
+    except KeyError:  # Cookie is not set
         return
     try:
-        payload = jwt.decode(jwt_token, JWT_SECRET, algorithm="HS256")
-    except jwt.exceptions.InvalidSignatureError:  # Ignore invalid stokens
+        encrypted_data = jwt.decode(jwt_token, JWT_SECRET, algorithm="HS256")
+    except jwt.exceptions.InvalidSignatureError:  # Invalid token
         return
-    cherrypy.session["email"] = payload['email']
+    # Set the session as authenticated
+    cherrypy.session["email"] = encrypted_data["email"]

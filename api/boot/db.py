@@ -15,9 +15,9 @@ CREATE UNIQUE INDEX IF NOT EXISTS idx_contacts_email
     ON providers (email);
 """,
     """
-CREATE TABLE IF NOT EXISTS seeker_requests
+CREATE TABLE IF NOT EXISTS help_requests
     (name TEXT, email TEXT, phone TEXT, language TEXT, zipcode INTEGER,
-    category TEXT, additional_info TEXT);
+    category TEXT, additional_info TEXT, state INTEGER, assginee TEXT DEFAULT NULL);
 """,
 ]
 

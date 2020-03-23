@@ -23,7 +23,7 @@ class Controller(object):
         json_data = json.loads(data)
         cherrypy.session["email"] = json_data["email"]
         jwt_token = jwt.encode(json_data, JWT_SECRET, algorithm="HS256")
-        jwt_token = jwt_token.decode('utf-8')
+        jwt_token = jwt_token.decode("utf-8")
         cookie = cherrypy.response.cookie
         cookie["PROVIDER_DATA"] = jwt_token
         cookie["PROVIDER_DATA"]["max-age"] = 43200  # 30 days
