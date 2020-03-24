@@ -34,7 +34,7 @@
             $('body').on('click', '.assign-help-request', function() {
                 $.ajax
                 ({
-                    url: 'http://en.localhost:8080/api/provider/assign_help_request',
+                    url: '/api/provider/assign_help_request',
                     data: {"email": "{{ session('email') }}", "help_request_id": $(this).data('id')},
                     type: 'POST',
                     error: function(result)
