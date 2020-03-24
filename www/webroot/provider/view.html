@@ -39,12 +39,13 @@
                     type: 'POST',
                     error: function(result)
                     {
-                        alert("Error: " + result);
+                        alert("An error has occurred! Please try again later!");
                     },
                     dataType: "json",
                     success: function(result)
                     {
-                        alert(result.assignee);
+                        $('#help_request_id' + result.id).hide();
+                        $('#assignee_help_request_id' + result.id).text(result.assignee);
                     }
                 });
             });
@@ -75,6 +76,11 @@
             }
 
             function buildTableCell(elem) {
+                var assign_link = "";
+                if (elem.assignee === "") {
+                    assign_link = "<a href='#' id='help_request_id" + elem.id + "' class='assign-help-request' data-id='" + elem.id + "'>Assign</a>"
+                }
+
                 return "<td>" + elem.name + "</td> \
                     <td>" + elem.email + "</td> \
                     <td>" + elem.phone + "</td> \
@@ -82,7 +88,7 @@
                     <td>" + elem.zipcode + "</td> \
                     <td>" + elem.category + "</td> \
                     <td>" + elem.additional_info + "</td> \
-                    <td><button class='assign-help-request' data-id='" + elem.id + "'>Assign</button>" + elem.assignee + "</td>"
+                    <td>" + assign_link + "<label id='assignee_help_request_id" + elem.id + "'>" + elem.assignee + "</label></td>"
             }
         });
     </script>
