@@ -29,6 +29,27 @@
         </tbody>
     </table>
 
+    <script>
+        $(document).ready(function() {
+            $('body').on('click', '.assign-help-request', function() {
+                $.ajax
+                ({
+                    url: 'http://en.localhost:8080/api/provider/assign_help_request',
+                    data: {"email": "{{ session('email') }}", "help_request_id": $(this).data('id')},
+                    type: 'POST',
+                    error: function(result)
+                    {
+                        alert("Error: " + result);
+                    },
+                    dataType: "json",
+                    success: function(result)
+                    {
+                        alert(result.assignee);
+                    }
+                });
+            });
+        });
+    </script>
 
     <script>
         $(document).ready(function () {
@@ -61,7 +82,7 @@
                     <td>" + elem.zipcode + "</td> \
                     <td>" + elem.category + "</td> \
                     <td>" + elem.additional_info + "</td> \
-                    <td>" + elem.assignee + "</td>"
+                    <td><button class='assign-help-request' data-id='" + elem.id + "'>Assign</button>" + elem.assignee + "</td>"
             }
         });
     </script>
