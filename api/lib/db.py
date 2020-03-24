@@ -92,6 +92,17 @@ def get_help_requests(email):
         result = cursor.fetchall()
     return result
 
+def get_help_request(id):
+    sql = "SELECT hr.*, COALESCE(p.email, '') as assignee FROM help_requests hr " \
+          "LEFT JOIN providers p ON p.id = hr.provider_id " \
+          "WHERE hr.id=? "
+    sql_args = [id]
+    with sqlite3.connect(DBSTRING) as connection:
+        connection.row_factory = dict_factory
+        cursor = connection.execute(sql, sql_args)
+        result = cursor.fetchone()
+    return result
+
 
 def check_zip_code(zip_code):
     sql = "SELECT code FROM ZIP_CODES WHERE code=?"
@@ -113,3 +124,16 @@ def get_help_requests_count():
     with sqlite3.connect(DBSTRING) as connection:
         cursor = connection.execute(sql)
     return cursor.fetchone()
+
+def assign_help_request(provider_email, help_request_id):
+
+    with sqlite3.connect(DBSTRING) as connection:
+        sql = (
+            "UPDATE help_requests SET "
+            "provider_id = (SELECT id from providers WHERE email=?) "
+            "WHERE id=?"
+        )
+        sql_args = [provider_email, help_request_id]
+        connection.execute(sql, sql_args)
+    return get_help_request(help_request_id)
+
