@@ -5,7 +5,7 @@ import os
 CREATE_SQL = [
     """
 CREATE TABLE IF NOT EXISTS providers
-    (email TEXT, lang TEXT , token TEXT,
+    (id integer primary key autoincrement, email TEXT, lang TEXT , token TEXT,
     verified INTEGER DEFAULT 0, zipcode INTEGER,
     language TEXT, category TEXT, notify INTEGER
     );
@@ -16,8 +16,8 @@ CREATE UNIQUE INDEX IF NOT EXISTS idx_contacts_email
 """,
     """
 CREATE TABLE IF NOT EXISTS help_requests
-    (name TEXT, email TEXT, phone TEXT, language TEXT, zipcode INTEGER,
-    category TEXT, additional_info TEXT, state INTEGER, assginee TEXT DEFAULT NULL);
+    (id integer primary key autoincrement, name TEXT, email TEXT, phone TEXT, language TEXT, zipcode INTEGER,
+    category TEXT, additional_info TEXT, state INTEGER, provider_id integer DEFAULT NULL);
 """,
 ]
 

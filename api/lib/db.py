@@ -82,7 +82,9 @@ def insert_seeker_request(
 
 def get_help_requests(email):
     provider = get_provider(email)
-    sql = "SELECT * FROM help_requests WHERE zipcode=?"
+    sql = "SELECT hr.*, COALESCE(p.email, '') as assignee FROM help_requests hr " \
+          "LEFT JOIN providers p ON p.id = hr.provider_id " \
+          "WHERE hr.zipcode=? "
     sql_args = [provider.zipcode]
     with sqlite3.connect(DBSTRING) as connection:
         connection.row_factory = dict_factory
