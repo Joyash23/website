@@ -82,9 +82,11 @@ def insert_seeker_request(
 
 def get_help_requests(email):
     provider = get_provider(email)
-    sql = "SELECT hr.*, COALESCE(p.email, '') as assignee FROM help_requests hr " \
-          "LEFT JOIN providers p ON p.id = hr.provider_id " \
-          "WHERE hr.zipcode=? "
+    sql = (
+        "SELECT hr.*, COALESCE(p.email, '') as assignee FROM help_requests hr "
+        "LEFT JOIN providers p ON p.id = hr.provider_id "
+        "WHERE hr.zipcode=? "
+    )
     sql_args = [provider.zipcode]
     with sqlite3.connect(DBSTRING) as connection:
         connection.row_factory = dict_factory
@@ -92,10 +94,13 @@ def get_help_requests(email):
         result = cursor.fetchall()
     return result
 
+
 def get_help_request(id):
-    sql = "SELECT hr.*, COALESCE(p.email, '') as assignee FROM help_requests hr " \
-          "LEFT JOIN providers p ON p.id = hr.provider_id " \
-          "WHERE hr.id=? "
+    sql = (
+        "SELECT hr.*, COALESCE(p.email, '') as assignee FROM help_requests hr "
+        "LEFT JOIN providers p ON p.id = hr.provider_id "
+        "WHERE hr.id=? "
+    )
     sql_args = [id]
     with sqlite3.connect(DBSTRING) as connection:
         connection.row_factory = dict_factory
@@ -125,6 +130,7 @@ def get_help_requests_count():
         cursor = connection.execute(sql)
     return cursor.fetchone()
 
+
 def assign_help_request(provider_email, help_request_id):
 
     with sqlite3.connect(DBSTRING) as connection:
@@ -136,4 +142,3 @@ def assign_help_request(provider_email, help_request_id):
         sql_args = [provider_email, help_request_id]
         connection.execute(sql, sql_args)
     return get_help_request(help_request_id)
-

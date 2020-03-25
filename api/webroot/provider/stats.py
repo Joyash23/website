@@ -13,5 +13,4 @@ class Controller(object):
             "providers_count": providers_count,
             "help_requests_count": help_requests_count,
         }
-        print(data)
         return json.dumps(data)
