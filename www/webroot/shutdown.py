@@ -12,12 +12,15 @@ class Controller(object):
     @controller.publish
     @cherrypy.tools.json_in()
     def index(self):
-        # try:
-        #     secret = cherrypy.request.json['hook']['config']['secret']
-        # except KeyError:
-        #     raise HTTPError(400)
-        # if secret != GITHOOK_SECRET:
-        #     raise HTTPError(400)
+        try:
+            secret = cherrypy.request.json['hook']['config']['secret']
+        except KeyError:
+            raise HTTPError(400)
+        if secret != GITHOOK_SECRET:
+            raise HTTPError(400)
         url = f"{API_URL}/shutdown"
-        result = requests.get(url)
+        try:
+            result = requests.get(url)
+        except requests.ConnectionError:
+            pass
         cherrypy.engine.exit()
