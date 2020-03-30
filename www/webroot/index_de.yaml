@@ -1,7 +1,11 @@
-slogan: Zugababa
+slogan: Vom Volk, fürs Volk.
 
-instructions: Make a new post about providing or seeking help or simply browse through the respective posts to find a helper or person in need.
+instructions: Erstelle selbst einen Hilfegesuch, biete deine Hilfe an, oder sieh dir aktuelle Anfragen in deiner Nähe an.
 
-seeking_help: Seeking help
+seeking_help: Suche Hilfe
 
-providing_help: Providing help
+providing_help: Biete Hilfe an
+
+providers_registered: Registrierte Helfende
+
+help_requests_open: Aktuell offene Hilfegesuche
