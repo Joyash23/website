@@ -1,0 +1,68 @@
+= Deploying Viral Help Portal to DigitalOcean
+João Pinto <lamego.pinto@gmail.com
+Draft
+
+== Droplet requirements
+
+System requirements:
+
+- 4 GB Memory
+- 80 GB Disk / FRA1
+- Ubuntu 18.04.3 (LTS) x64
+
+== Post-config
+
+Enable the DO firewall and restrict ssh access to your admin network.
+
+.System upgrades
+```sh
+apt update
+apt upgrade
+```
+
+.Needed packages
+```sh
+apt install python3-pip
+
+```
+
+== Deploy the web site
+
+```sh
+useradd --create-home --skel /etc/skel -s /bin/bash web
+su - web
+git clone https://github.com/ViralHelp/website
+cd website
+pip3 install --user -r requirements.txt
+```
+
+== DNS config
+
+- Setup an A record for www pointing to the droplet IP
+- Setup an CNAME record for lang (de, it, en, etc) pointing to www.yourdomain.org
+
+== Setup NGINX
+
+```sh
+apt install nginx python-certbot-nginx
+
+cat > /etc/nginx/sites-available/www.viralhelp.org << _EOF_
+server {
+	listen 80;
+	listen [::]:80;
+
+	server_name *.viralhelp.org;
+
+	root /var/www/example.com;
+	index index.html;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
+_EOF_
+ln -s /etc/nginx/sites-available/www.viralhelp.org  /etc/nginx/sites-enabled/www.viralhelp.org
+LANG="de en fr it pt www"
+certbot --nginx -d www.viralhelp.org -d en.viralhelp.org
+
+````
