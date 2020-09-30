@@ -1,4 +1,4 @@
-=  Local Volunteer Community Support Portal website
+=  Local Volunteer Community Support Portal website For Everyone
 
 == Introduction
 
@@ -36,7 +36,7 @@ curl "http://en.localhost:8080/provider/join?email=YOUR_EMAIL&token=YOUR_TOKEN"
 curl http://localhost:9090/provider/login -d "email=EMAIL_ADDRESS&lang=en"
 
 
-== Desired Features
+== Desired Features are following:-
 
 . Simple interface to be usable by elder people
 . Multilanguage support for the site structure
